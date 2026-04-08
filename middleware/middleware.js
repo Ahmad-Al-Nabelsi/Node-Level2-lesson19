@@ -21,7 +21,7 @@ const checkIfUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
     // login user
-    jwt.verify(token, "c4a.dev", async (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
       if (err) {
         res.locals.user = null;
         next();
